@@ -8,22 +8,25 @@
     "height": 0,
     "modules-left": [
         "clock",
-        // "cpu",
-        // "memory",
+        "cpu",
+        "memory",
         "custom/weather",
         "wlr/workspaces"
     ],
     "modules-center": ["hyprland/window"],
     "modules-right": [
         "tray",
-        "custom/updates",
-        // "custom/language",
+        //"custom/updates",
+        //"custom/language",
+        //"network",
+        "battery",
         "pulseaudio",
         "pulseaudio#microphone"
     ],
 
     "hyprland/window": {
-        "format": "{}"
+        "format": "{}",
+        "seperate-outputs": true
     },
     "wlr/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -32,39 +35,39 @@
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
             "urgent": "",
             "active": "",
             "default": ""
           }
     },
-    // "cpu": {
-    //     "interval": 10,
-    //     "format": " {}%",
-    //     "max-length": 10,
-    //     "on-click": ""
-    // },
-    // "memory": {
-    //     "interval": 30,
-    //     "format": " {}%",
-    //     "format-alt":" {used:0.1f}G",
-    //     "max-length": 10
-    // },
+    "cpu": {
+        "interval": 10,
+        "format": " {}%",
+        "max-length": 10,
+        "on-click": ""
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "format-alt":" {used:0.1f}G",
+        "max-length": 10
+    },
     "custom/updates": {
         "exec": "(paru -Qua) | wc -l",
         "interval": 7200,
         "format": " {}"
     },
-    // "custom/language": {
-    //     "exec": "cat /tmp/kb_layout",
-    //     "interval": 3,
-    //     "format": " {}",
-    //     "tooltip": false
-    // },
+    "custom/language": {
+        "exec": "cat /tmp/kb_layout",
+        "interval": 3,
+        "format": " {}",
+        "tooltip": false
+    },
     "custom/weather" : {
         "tooltip" : true,
         "format" : "{}",
@@ -108,5 +111,28 @@
         "on-scroll-up": "pamixer --default-source -i 5",
         "on-scroll-down": "pamixer --default-source -d 5",
         "scroll-step": 5
-    }
+    },
+    "battery": {
+        "bat": "BAT1",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25
+    },
+    "network": {
+        "interface": "wlp2s0",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "disconnected", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
 }

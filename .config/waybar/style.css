@@ -3,13 +3,13 @@
     border-radius: 0;
     font-family: Cartograph CF Nerd Font, monospace;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     min-height: 0;
 }
 
 window#waybar {
     background: rgba(21, 18, 27, 0);
-    color: #cdd6f4;
+    color: #ebdbb2;
 }
 
 tooltip {
@@ -22,29 +22,30 @@ tooltip {
 
 #workspaces button {
     padding: 5px;
-    color: #313244;
-    margin-right: 5px;
+    color: #a89984;
+    margin-right: 8px;
+    margin-left: 0px;
 }
 
 #workspaces button.active {
-    color: #a6adc8;
+    color: #fbf1c7;
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
+    color: #83a598;
+    background: #282828;
     border-radius: 10px;
 }
 
 #workspaces button.urgent {
-    color: #11111b;
-    background: #a6e3a1;
+    color: #fb4934;
+    background: #282828;
     border-radius: 10px;
 }
 
 #workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
+    background: #282828;
+    color: #8ec87c;
     border-radius: 10px;
 }
 
@@ -52,6 +53,8 @@ tooltip {
 #custom-updates,
 #custom-caffeine,
 #custom-weather,
+#cpu,
+#memory,
 #window,
 #clock,
 #battery,
@@ -60,7 +63,7 @@ tooltip {
 #workspaces,
 #tray,
 #backlight {
-    background: #1e1e2e;
+    background: #282828;
     padding: 0px 10px;
     margin: 3px 0px;
     margin-top: 10px;
@@ -73,7 +76,7 @@ tooltip {
 }
 
 #workspaces {
-    background: #1e1e2e;
+    background: #282828;
     border-radius: 10px;
     margin-left: 10px;
     padding-right: 0px;
@@ -107,7 +110,7 @@ tooltip {
 }
 
 #clock {
-    color: #fab387;
+    color: #fe8019;
     border-radius: 10px 0px 0px 10px;
     margin-left: 5px;
     border-right: 0px;
@@ -120,22 +123,35 @@ tooltip {
 }
 
 #pulseaudio {
-    color: #89b4fa;
+    color: #83a598;
     border-left: 0px;
     border-right: 0px;
 }
 
 #pulseaudio.microphone {
-    color: #cba6f7;
+    color: #d3869b;
     margin-right: 5px;
     border-radius: 0 10px 10px 0;
 }
 
 #battery {
-    color: #a6e3a1;
-    border-radius: 0 10px 10px 0;
-    margin-right: 10px;
+    color: #8ec07c;
+    border-radius: 10px 0px 0px 10px;
+    border-right: 0px;
+    padding-right: 10px;
+    margin-right: 0px;
+}
+
+#cpu {
+    color: #83a598;
     border-left: 0px;
+    border-right: 0px;
+}
+
+#memory {
+    color: #d3869b;
+    border-left: 0px;
+    border-radius: 0 10px 10px 0;
 }
 
 #custom-weather {
