@@ -110,16 +110,17 @@ tooltip {
 }
 
 #clock {
-    color: #fe8019;
+    color: #d3869b;
     border-radius: 10px 0px 0px 10px;
     margin-left: 5px;
     border-right: 0px;
 }
 
 #network {
-    color: #f9e2af;
+    color: #83a598;
     border-left: 0px;
     border-right: 0px;
+    /*border-radius: 0px 10px 10px 0px;*/
 }
 
 #pulseaudio {
@@ -136,20 +137,21 @@ tooltip {
 
 #battery {
     color: #8ec07c;
-    border-radius: 10px 0px 0px 10px;
-    border-right: 0px;
+    /*border-radius: 10px 0px 0px 10px;*/
+    /*border-right: 0px;*/
+    border-left: 0px;
     padding-right: 10px;
     margin-right: 0px;
 }
 
 #cpu {
-    color: #83a598;
+    color: #8ec87c;
     border-left: 0px;
     border-right: 0px;
 }
 
 #memory {
-    color: #d3869b;
+    color: #8ec87c;
     border-left: 0px;
     border-radius: 0 10px 10px 0;
 }
@@ -158,4 +160,9 @@ tooltip {
     border-radius: 0px 10px 10px 0px;
     border-right: 0px;
     margin-left: 0px;
+}
+
+#backlight {
+    border-radius: 10px 0px 0px 10px;
+    border-right: 0px;
 }

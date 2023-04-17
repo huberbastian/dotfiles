@@ -8,9 +8,10 @@
     "height": 0,
     "modules-left": [
         "clock",
+        "network",
         "cpu",
         "memory",
-        "custom/weather",
+        //"custom/weather",
         "wlr/workspaces"
     ],
     "modules-center": ["hyprland/window"],
@@ -18,7 +19,7 @@
         "tray",
         //"custom/updates",
         //"custom/language",
-        //"network",
+        "backlight",
         "battery",
         "pulseaudio",
         "pulseaudio#microphone"
@@ -47,14 +48,12 @@
     },
     "cpu": {
         "interval": 10,
-        "format": " {}%",
-        "max-length": 10,
-        "on-click": ""
+        "format": "",
+        "max-length": 10
     },
     "memory": {
         "interval": 30,
-        "format": " {}%",
-        "format-alt":" {used:0.1f}G",
+        "format": "",
         "max-length": 10
     },
     "custom/updates": {
@@ -124,15 +123,19 @@
         "max-length": 25
     },
     "network": {
-        "interface": "wlp2s0",
-        "format": "{ifname}",
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "format-disconnected": "disconnected", //An empty format will hide the module.
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} ",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50
+        "format-wifi": "直 Connected",
+        "format-ethernet": " {essid}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "睊 Disconnected",
+        "tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+        "on-click": "nm-connection-editor"
     },
+    "backlight":{
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["","",""],
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "min-length": 6 
+    }
 }
