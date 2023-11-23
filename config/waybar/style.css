@@ -1,0 +1,155 @@
+* {
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: FontAwesome, Roboto, sans-serif;
+  font-size: 16px;
+}
+
+window#waybar {
+  background-color: rgba(40, 40, 40, 0.7); /* Gruvbox Background */
+  color: #fbf1c7;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+button {
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+  border-radius: 3;
+}
+
+button:hover {
+  background: inherit;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background-color: transparent;
+  color: #fbf1c7;
+}
+
+#workspaces button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.active {
+  background-color: #504945;
+  box-shadow: inset 0 -3px #458588;
+}
+
+#workspaces button.urgent {
+  box-shadow: inset 0 -3px #cc241d;
+}
+
+#clock,
+#battery,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#tray {
+  padding: 0px 10px 0px 10px;
+  color: #fbf1c7;
+}
+
+#window {
+  margin: 0px 10px 0px 10px;
+}
+#workspaces {
+  margin: 0px 4px;
+  font-weight: 500;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#clock {
+  background-color: #458588;
+}
+
+#battery {
+  background-color: #458588;
+  color: #fbf1c7;
+}
+
+#battery.charging, #battery.plugged {
+  color: #fbf1c7;
+  background-color: #98921a;
+}
+
+@keyframes blink {
+  to {
+    background-color: #282828;
+    color: #fbf1c7;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: #cc241d;
+  color: #fbf1c7;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: #282828;
+}
+
+#backlight {
+  background-color: #458588;
+}
+
+#network {
+  background-color: #458588;
+}
+
+#network.disconnected {
+  background-color: #cc241d;
+}
+
+#pulseaudio {
+  background-color: #d79921;
+  color: #282828;
+}
+
+#pulseaudio.muted {
+  background-color: #458588;
+  color: #fbf1c7;
+}
+
+#wireplumber {
+  background-color: #fbf1c7;
+  color: #282828;
+}
+
+#wireplumber.muted {
+  background-color: #f53c3c;
+}
+
+#tray {
+  background-color: rgba(40, 40, 40, 0.5);
+  border-radius: 3;
+  /* background-color: #458588; */
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
+}
