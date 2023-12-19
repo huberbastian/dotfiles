@@ -5,3 +5,19 @@
 [[ $- != *i* ]] && return
 
 export PATH="$HOME/.ghcup/bin:$HOME/Applications/flutter/bin:$HOME/.local/bin:$HOME/bin:$PATH"
+export AAI_API_KEY=dd3e478664334c4cb4f0c2f5b49019eb
+export CHROME_EXECUTABLE=google-chrome-stable
+export QT_QPA_PLATFORM="wayland;xcb"
+export QT_QPA_PLATFORMTHEME=qt5ct
+export GDK_BACKEND=wayland
+
+export MYSQL_ROOT_PASSWORD=foo  
+export MYSQL_USER=hybris  
+export MYSQL_USER_PASSWORD=hybris  
+export MYSQL_DATABASE=hybris  
+export MYSQL_PORT=3306
+
+export NPM_CONFIG_PREFIX="$HOME/.npm-global"
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+eval "$(starship init bash)"
