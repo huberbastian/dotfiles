@@ -11,12 +11,6 @@ export QT_QPA_PLATFORM="wayland;xcb"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GDK_BACKEND=wayland
 
-export MYSQL_ROOT_PASSWORD=foo  
-export MYSQL_USER=hybris  
-export MYSQL_USER_PASSWORD=hybris  
-export MYSQL_DATABASE=hybris  
-export MYSQL_PORT=3306
-
 export NPM_CONFIG_PREFIX="$HOME/.npm-global"
 export PATH="$HOME/.npm-global/bin:$PATH"
 
