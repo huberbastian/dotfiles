@@ -1,3 +1,36 @@
+/*
+* Nord Colors
+*/
+
+/* Polar Night (background colors) */
+
+@define-color nord0  #2e3440;
+@define-color nord1  #3b4252;
+@define-color nord2  #434c5e;
+@define-color nord3  #4c566a;
+
+/* Snow Storm (text colors) */
+
+@define-color nord4  #d8dee9;
+@define-color nord5  #e5e9f0;
+@define-color nord6  #eceff4;
+
+/* Frost (primary UI) */
+
+@define-color nord7  #8fbcbb;
+@define-color nord8  #88c0d0;
+@define-color nord9  #81a1c1;
+@define-color nord10 #5e81ac;
+
+/* Aurora (secondary UI) */
+
+@define-color nord11 #bf616a;
+@define-color nord12 #d08770;
+@define-color nord13 #ebcb8b;
+@define-color nord14 #a4be8c;
+@define-color nord15 #b48ead;
+
+
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: FontAwesome, Roboto, sans-serif;
@@ -5,8 +38,8 @@
 }
 
 window#waybar {
-  background-color: rgba(40, 40, 40, 0.7); /* Gruvbox Background */
-  color: #fbf1c7;
+  background-color: @nord0;
+  color: @nord4;
   transition-property: background-color;
   transition-duration: .5s;
 }
@@ -28,7 +61,7 @@ button:hover {
 #workspaces button {
   padding: 0 5px;
   background-color: transparent;
-  color: #fbf1c7;
+  color: @nord4;
 }
 
 #workspaces button:hover {
@@ -36,12 +69,12 @@ button:hover {
 }
 
 #workspaces button.active {
-  background-color: #504945;
-  box-shadow: inset 0 -3px #458588;
+  background-color: @nord3;
+  box-shadow: inset 0 -3px @nord10;
 }
 
 #workspaces button.urgent {
-  box-shadow: inset 0 -3px #cc241d;
+  box-shadow: inset 0 -3px @nord11;
 }
 
 #clock,
@@ -52,7 +85,7 @@ button:hover {
 #wireplumber,
 #tray {
   padding: 0px 10px 0px 10px;
-  color: #fbf1c7;
+  color: @nord4;
 }
 
 #window {
@@ -74,29 +107,27 @@ button:hover {
 }
 
 #clock {
-  background-color: #458588;
+  background-color: @nord3;
 }
 
 #battery {
-  background-color: #458588;
-  color: #fbf1c7;
+  background-color: @nord3;
 }
 
 #battery.charging, #battery.plugged {
-  color: #fbf1c7;
-  background-color: #98921a;
+  background-color: @nord14;
 }
 
 @keyframes blink {
   to {
-    background-color: #282828;
-    color: #fbf1c7;
+    background-color: @nord0;
+    color: @nord4;
   }
 }
 
 #battery.critical:not(.charging) {
-  background-color: #cc241d;
-  color: #fbf1c7;
+  background-color: @nord11;
+  color: @nord4;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -105,44 +136,43 @@ button:hover {
 }
 
 label:focus {
-  background-color: #282828;
+  background-color: @nord3;
 }
 
 #backlight {
-  background-color: #458588;
+  background-color: @nord3;
 }
 
 #network {
-  background-color: #458588;
+  background-color: @nord3;
 }
 
 #network.disconnected {
-  background-color: #cc241d;
+  background-color: @nord11;
 }
 
 #pulseaudio {
-  background-color: #d79921;
-  color: #282828;
+  background-color: @nord3;
+  color: @nord4;
 }
 
 #pulseaudio.muted {
-  background-color: #458588;
-  color: #fbf1c7;
+  background-color: @nord3;
+  color: @nord4;
 }
 
 #wireplumber {
-  background-color: #fbf1c7;
-  color: #282828;
+  background-color: @nord3;
+  color: @nord4;
 }
 
 #wireplumber.muted {
-  background-color: #f53c3c;
+  background-color: @nord11;
 }
 
 #tray {
-  background-color: rgba(40, 40, 40, 0.5);
+  background-color: @nord3;
   border-radius: 3;
-  /* background-color: #458588; */
 }
 
 #tray > .passive {
@@ -151,5 +181,5 @@ label:focus {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
+  background-color: @nord11;
 }

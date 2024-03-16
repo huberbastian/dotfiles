@@ -11,11 +11,11 @@
 
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/type-1"
-theme='style-5'
+theme='style-1'
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
-host=`echo $hostname`
+host=`hostname`
 
 # Options
 shutdown=' Shutdown'
@@ -29,7 +29,7 @@ no=' No'
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p "arch" \
+		-p "$host" \
 		-mesg "Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 }
