@@ -6,7 +6,7 @@
   "passthrough": false,
   "gtk-layer-shell": true,
 
-  "height": 30, 
+  "height": 36, 
   "spacing": 4, 
 
   /*
@@ -15,11 +15,10 @@
 
   "modules-left": [
     "clock",
-    "network",
-    "hyprland/workspaces"
+    "network"
   ],
   "modules-center": [
-    "hyprland/window"
+    "hyprland/workspaces"
   ],
   "modules-right": [
     "tray", 
@@ -63,7 +62,8 @@
     "format-charging": "{capacity}% 󰂄",
     "format-plugged": "{capacity}%  ",
     "format-alt": "{time} {icon}",
-    "format-icons": [" ", " ", " ", " ", " "]
+    "format-icons": [" ", " ", " ", " ", " "],
+    "on-click": "~/.config/rofi/scripts/powermenu_t1"
   },
 
   "battery#bat2": {
@@ -89,14 +89,14 @@
     "format-source-muted": "",
     "format-icons": {
       "headphone": "",
-      "hands-free": "",
-      "headset": "",
+      "hands-free": "",
+      "headset": "",
       "phone": "",
       "portable": "",
       "car": "",
       "default": ["", "", ""]
     },
-    "on-click": "pavucontrol"
+    "on-click": "~/.config/waybar/scripts/audio_changer.py"
   }
 }
 
