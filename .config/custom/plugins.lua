@@ -46,6 +46,22 @@ local plugins = {
     end,
   },
 
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    },
+    opts = {
+      debug = true, -- Enable debugging
+    },
+    keys = {
+      {"<leader>ccc", "<cmd>CopilotChatOpen<cr>"},
+    },
+    lazy=false
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
