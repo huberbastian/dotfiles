@@ -47,6 +47,11 @@ local plugins = {
   },
 
   {
+    "jwalton512/vim-blade",
+    lazy = false,
+  },
+
+  {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
     dependencies = {
@@ -59,7 +64,7 @@ local plugins = {
     keys = {
       {"<leader>ccc", "<cmd>CopilotChatOpen<cr>"},
     },
-    lazy=false
+    lazy=false,
   },
 
   -- To make a plugin not be loaded

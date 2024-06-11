@@ -15,8 +15,6 @@ local sources = {
   b.formatting.prettier,
   -- Lua
   b.formatting.stylua,
-  -- Java 
-  b.formatting.google_java_format
 }
 
 null_ls.setup {
