@@ -1,0 +1,17 @@
+#!/bin/bash
+
+HOME_DIR="$HOME"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+configs=(
+  ".config"
+  ".vimrc"
+  ".bashrc"
+)
+
+for config in "${configs[@]}"; do
+  if [[ -d "$SCRIPT_DIR/$config" || -f "$SCRIPT_DIR/$config" ]]; then
+    cp -r "$SCRIPT_DIR/$config" "$HOME_DIR"
+    echo "Copied '$SCRIPT_DIR/$config' to '$HOME_DIR'" 
+  fi
+done
