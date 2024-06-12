@@ -23,6 +23,8 @@ other_dots=(
   "$HOME/.vimrc"
   "$HOME/.bashrc"
   "$HOME/bin"
+  "$HOME/.oh-my-zsh/custom"
+  "$HOME/.zshrc"
 )
 
 dotfiles_repo="$HOME/dotfiles"
@@ -51,8 +53,13 @@ done
 
 for dir in "${other_dots[@]}"; do 
   if [ -e "$dir" ]; then
-    cp -r "$dir" "$dotfiles_repo"
-    echo "Copied '$dir' to '$dotfiles_repo'"
+    if [ $dir = "$HOME/.oh-my-zsh/custom" ]; then
+      cp -r "$dir" "$dotfiles_repo/.oh-my-zsh/" 
+      echo "Copied '$dir' to '$dotfiles_repo/.oh-my-zsh/'"
+    else
+      cp -r "$dir" "$dotfiles_repo"
+      echo "Copied '$dir' to '$dotfiles_repo'"
+    fi
   else
     echo "Warning: '$dir' does not exist"
   fi

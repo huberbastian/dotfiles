@@ -1,0 +1,19 @@
+#!/bin/sh
+
+url='https://aur.archlinux.org/rpc?v=5&'
+newer_fmt='\033[34m:: \033[0;1m%s \033[0;31m%s\033[0m -> \033[32m%s\033[0m\n'
+older_fmt='\033[34m:: \033[0;1m%s \033[0m%s != %s\n'
+
+pacman -Qm | sort >| /tmp/local.pkgs
+curl -s "${url}type=info$(printf '&arg[]=%s' $(cut -f 1 /tmp/local.pkgs))" \
+	| jq -r '.results[]|.Name+" "+.Version' \
+	| sort | join /tmp/local.pkgs - \
+	| while read pkg a b; do
+      # if [ $pkg = "yay-git" ]; then
+      #   continue
+      # fi
+			case "$(vercmp $a $b)" in
+				-1) printf "$newer_fmt" "$pkg" "$a" "$b" ;;
+				1)  printf "$older_fmt" "$pkg" "$a" "$b" ;;
+			esac
+		done
