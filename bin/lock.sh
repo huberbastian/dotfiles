@@ -1,37 +1,36 @@
-#!/bin/sh
+#!/bin/bash
 
-BLANK='#000000cc'
-CLEAR='#ffffff'
-DEFAULT='#282828'
-TEXT='#ebdbb2'
-WRONG='#cc241d'
-VERIFYING='#ebdbb2'
+# uses swaylock-effects-git package from aur
+# won't work with regular swaylock
+# current colors: nord-theme
 
-i3lock \
---insidever-color=$CLEAR     \
---ringver-color=$VERIFYING   \
-\
---insidewrong-color=$CLEAR   \
---ringwrong-color=$WRONG     \
-\
---ring-color=$DEFAULT        \
---line-color=$BLANK          \
---separator-color=$DEFAULT   \
-\
---verif-color=$TEXT          \
---wrong-color=$TEXT          \
---time-color=$TEXT           \
---date-color=$TEXT           \
---layout-color=$TEXT         \
---keyhl-color=$TEXT          \
---bshl-color=$WRONG          \
-\
---screen 1                   \
---keylayout 1                \
---time-str="%H:%M:%S"        \
---date-str="%d-%m-%Y"        \
---color=$BLANK               \
-#--blur 5                     \
-#--inside-color=$BLANK        \
-#--clock                      \
-#--indicator                  \
+swaylock \
+	--screenshots \
+  --font Roboto \
+	--clock \
+	--indicator \
+	--indicator-radius 100 \
+	--indicator-thickness 7 \
+  --indicator-caps-lock \
+	--effect-blur 8x4 \
+	--ring-color 2e3440 \
+	--key-hl-color d8dee9 \
+	--line-color 00000000 \
+	--inside-color 00000088 \
+  --inside-ver-color 00000088 \
+  --inside-wrong-color 00000088 \
+  --inside-clear-color 00000088 \
+  --ring-ver-color a3be8c \
+  --line-uses-ring \
+  --text-color d8dee9 \
+  --ring-wrong-color bf616a \
+  --ring-caps-lock-color d08770 \
+  --ring-clear-color ebcb8b \
+  --text-caps-lock-color d8dee9\
+  --text-wrong-color d8dee9 \
+  --text-ver-color d8dee9 \
+  --text-clear-color d8dee9 \
+	--separator-color 00000000 \
+  --bs-hl-color b48ead \
+  --caps-lock-key-hl-color d8dee9 \
+  --caps-lock-bs-hl-color b48ead \
