@@ -1,7 +1,9 @@
 #!/bin/bash
 
 config_dir="$HOME/.config"
+dotfiles_repo="$HOME/dotfiles"
 
+# files in config directory
 configs=(
   "hypr"
   "fish"
@@ -19,6 +21,7 @@ configs=(
   "polybar"
 )
 
+# files outside of .config directory
 other_dots=(
   "$HOME/.vimrc"
   "$HOME/.bashrc"
@@ -27,19 +30,9 @@ other_dots=(
   "$HOME/.zshrc"
 )
 
-dotfiles_repo="$HOME/dotfiles"
-
-if [ ! -d "$dotfiles_repo" ]; then
-  mkdir "$dotfiles_repo"
-fi
-
-if [ ! -d "$dotfiles_repo/.config" ]; then
-  mkdir "$dotfiles_repo/.config"
-fi
-
 for item in "${configs[@]}"; do 
   if [ -d "$config_dir/$item" ]; then
-    if [ $item = "nvim/lua/custom" ]; then
+    if [ "$item" = "nvim/lua/custom" ]; then
       cp -r "$config_dir/$item" "$dotfiles_repo/.config/nvim/lua/"
       echo "Copied '$config_dir/$item' to '$dotfiles_repo/.config/nvim/lua/'"
     else
@@ -53,9 +46,15 @@ done
 
 for dir in "${other_dots[@]}"; do 
   if [ -e "$dir" ]; then
-    if [ $dir = "$HOME/.oh-my-zsh/custom" ]; then
-      cp -r "$dir" "$dotfiles_repo/.oh-my-zsh/" 
-      echo "Copied '$dir' to '$dotfiles_repo/.oh-my-zsh/'"
+    if [ "$dir" = "$HOME/.oh-my-zsh/custom" ]; then
+        for item in $dir/*; do
+          if [ -f $item ]; then
+            cp "$item" "$dotfiles_repo/.oh-my-zsh/custom/"
+            echo "Copied '$item' to '$dotfiles_repo/.oh-my-zsh/custom/'"
+          else 
+            echo "not found: '$item'"
+          fi
+        done
     else
       cp -r "$dir" "$dotfiles_repo"
       echo "Copied '$dir' to '$dotfiles_repo'"
