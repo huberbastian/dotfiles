@@ -8,7 +8,7 @@ configs=(
   ".vimrc"
   ".bashrc"
   ".zshrc"
-  ".oh-my-fish"
+  ".oh-my-zsh"
 )
 
 for config in "${configs[@]}"; do
