@@ -1,0 +1,249 @@
+start-at-login = true
+# After login commands only work is start-at-login = true
+after-login-command = []
+
+# Run Sketchybar together with AeroSpace
+# sketchbar has a built-in detection of already running process,
+# so it won't be run twice on AeroSpace restart
+# after-startup-command = ['exec-and-forget sketchybar']
+after-startup-command = ['exec-and-forget borders']
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
+]
+
+accordion-padding = 30
+non-empty-workspaces-root-containers-layout-on-startup = 'smart'
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+automatically-unhide-macos-hidden-apps = false
+
+gaps.outer.top = 12
+gaps.outer.bottom = 10
+gaps.outer.left = 12
+gaps.outer.right = 12
+gaps.inner.horizontal = 10
+gaps.inner.vertical = 10
+
+enable-normalization-flatten-containers = true 
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+[workspace-to-monitor-force-assignment]
+    1 = 'main'                       
+    2 = 'main'                       
+    3 = ['S240HL', 'secondary']                       
+    4 = ['S240HL', 'secondary']                       
+    5 = ['G246HYL', 'secondary']                       
+    6 = ['G246HYL', 'secondary']                       
+
+[mode.main.binding]
+    alt-period = 'layout tiles horizontal vertical'
+    alt-comma = 'layout accordion horizontal vertical'
+    cmd-f = 'fullscreen'
+    ctrl-alt-shift-cmd-c = 'reload-config'
+
+    ctrl-cmd-h = 'focus left'
+    ctrl-cmd-j = 'focus down'
+    ctrl-cmd-k = 'focus up'
+    ctrl-cmd-l = 'focus right'
+
+    alt-cmd-h = 'move left'
+    alt-cmd-j = 'move down'
+    alt-cmd-k = 'move up'
+    alt-cmd-l = 'move right'
+
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
+
+    cmd-1 = 'workspace 1'
+    cmd-2 = 'workspace 2'
+    cmd-3 = 'workspace 3'
+    cmd-4 = 'workspace 4'
+    cmd-5 = 'workspace 5'
+    cmd-6 = 'workspace 6'
+
+    cmd-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
+    cmd-shift-2 = 'move-node-to-workspace --focus-follows-window 2'
+    cmd-shift-3 = 'move-node-to-workspace --focus-follows-window 3'
+    cmd-shift-4 = 'move-node-to-workspace --focus-follows-window 4'
+    cmd-shift-5 = 'move-node-to-workspace --focus-follows-window 5'
+    cmd-shift-6 = 'move-node-to-workspace --focus-follows-window 6'
+
+    alt-shift-r = 'mode resize'
+    alt-shift-backspace = 'mode service'
+
+[mode.service.binding]
+  r = ['flatten-workspace-tree', 'mode main'] # reset layout
+  f = [
+    'layout floating tiling',
+    'mode main',
+  ] # Toggle between floating and tiling layout
+  backspace = ['close-all-windows-but-current', 'mode main']
+  esc = 'mode main'
+
+[mode.resize.binding]
+    h = 'resize width -50'
+    j = 'resize height +50'
+    k = 'resize height -50'
+    l = 'resize width +50'
+    enter = 'mode main'
+    esc = 'mode main'
+
+# Always floating windows
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'net.freemacsoft.AppCleaner'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.gimp.gimp-2.10'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.yummygum.Billy'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'no.mifi.losslesscut-mac'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.malwarebytes.mbam.frontend.application'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.airport.airportutility'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.AddressBook'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.reminders'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.DiskUtility'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ScreenSharing'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Image_Capture'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Dictionary'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.FontBook'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.AudioMIDISetup'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.clock'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Home'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iBooksX'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.stocks'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.TV'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.weather'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Passwords'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Photos'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Notes'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.AppStore'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.surfshark.vpnclient.macos.direct'
+run = 'layout floating'
+
+

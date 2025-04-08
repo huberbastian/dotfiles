@@ -1,0 +1,10 @@
+font-family = JetBrains Mono
+font-size = 17.0
+theme = OneDark
+shell-integration-features = no-cursor,sudo
+cursor-style = block
+background-opacity = 0.75
+background-blur = 20
+
+keybind = cmd+enter=new_window
+keybind = cmd+n=new_split:auto
