@@ -1,249 +1,150 @@
-start-at-login = true
-# After login commands only work is start-at-login = true
-after-login-command = []
-
 # Run Sketchybar together with AeroSpace
-# sketchbar has a built-in detection of already running process,
-# so it won't be run twice on AeroSpace restart
-# after-startup-command = ['exec-and-forget sketchybar']
-after-startup-command = ['exec-and-forget borders']
+#after-startup-command = ['exec-and-forget sketchybar']
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
-accordion-padding = 30
-non-empty-workspaces-root-containers-layout-on-startup = 'smart'
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
+# Start AeroSpace at login
+start-at-login = true
 
-automatically-unhide-macos-hidden-apps = false
-
-gaps.outer.top = 12
-gaps.outer.bottom = 10
-gaps.outer.left = 12
-gaps.outer.right = 12
-gaps.inner.horizontal = 10
-gaps.inner.vertical = 10
-
-enable-normalization-flatten-containers = true 
+enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
+accordion-padding = 30
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'tiles'
+
+default-root-container-orientation = 'auto'
+
+# Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+automatically-unhide-macos-hidden-apps = true
+
+[key-mapping]
+  # Possible values: (qwerty|dvorak|colemak)
+  preset = 'qwerty'
+
+[gaps]
+  inner.horizontal = 5
+  inner.vertical =   5
+  outer.left =       8
+  outer.bottom =     8
+  outer.top =        8
+  # outer.top = [
+  #   { monitor.'Built-in Retina Display' = 10 },
+  #   40
+  # ]
+  outer.right =      8
+
 [workspace-to-monitor-force-assignment]
-    1 = 'main'                       
-    2 = 'main'                       
-    3 = ['S240HL', 'secondary']                       
-    4 = ['S240HL', 'secondary']                       
-    5 = ['G246HYL', 'secondary']                       
-    6 = ['G246HYL', 'secondary']                       
+  1 = 'main'
+  2 = 'main'
+  3 = 'main'
+  4 = ['S240HL', 'secondary', 'main']
+  5 = ['S240HL', 'secondary', 'main']
+  6 = ['S240HL', 'secondary', 'main']
+  7 = ['G246HYL', 'secondary', 'main']
+  8 = ['G246HYL', 'secondary', 'main']
+  9 = ['G246HYL', 'secondary', 'main'] 
 
 [mode.main.binding]
-    alt-period = 'layout tiles horizontal vertical'
-    alt-comma = 'layout accordion horizontal vertical'
-    cmd-f = 'fullscreen'
-    ctrl-alt-shift-cmd-c = 'reload-config'
 
-    ctrl-cmd-h = 'focus left'
-    ctrl-cmd-j = 'focus down'
-    ctrl-cmd-k = 'focus up'
-    ctrl-cmd-l = 'focus right'
+  # All possible keys:
 
-    alt-cmd-h = 'move left'
-    alt-cmd-j = 'move down'
-    alt-cmd-k = 'move up'
-    alt-cmd-l = 'move right'
+  # - Numbers.        0, 1, 2, ..., 9
+  # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+  # - F-keys.         f1, f2, ..., f20
+  # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+  #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+  #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+  #                   sectionSign (ISO keyboards only, european keyboards only)
+  # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+  #                   keypadMinus, keypadMultiply, keypadPlus
+  # - Arrows.         left, down, up, right
 
-    alt-shift-h = ['join-with left', 'mode main']
-    alt-shift-j = ['join-with down', 'mode main']
-    alt-shift-k = ['join-with up', 'mode main']
-    alt-shift-l = ['join-with right', 'mode main']
+  # All possible modifiers: cmd, alt, ctrl, shift
 
-    cmd-1 = 'workspace 1'
-    cmd-2 = 'workspace 2'
-    cmd-3 = 'workspace 3'
-    cmd-4 = 'workspace 4'
-    cmd-5 = 'workspace 5'
-    cmd-6 = 'workspace 6'
+  cmd-h = [] # Disable "hide application"
+  cmd-alt-h = [] # Disable "hide others"
+  
+  alt-q = 'close'
 
-    cmd-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
-    cmd-shift-2 = 'move-node-to-workspace --focus-follows-window 2'
-    cmd-shift-3 = 'move-node-to-workspace --focus-follows-window 3'
-    cmd-shift-4 = 'move-node-to-workspace --focus-follows-window 4'
-    cmd-shift-5 = 'move-node-to-workspace --focus-follows-window 5'
-    cmd-shift-6 = 'move-node-to-workspace --focus-follows-window 6'
+  alt-slash = 'layout tiles horizontal vertical'
+  alt-comma = 'layout accordion horizontal vertical'
 
-    alt-shift-r = 'mode resize'
-    alt-shift-backspace = 'mode service'
+  alt-h = 'focus --boundaries all-monitors-outer-frame left'
+  alt-j = 'focus --boundaries all-monitors-outer-frame down'
+  alt-k = 'focus --boundaries all-monitors-outer-frame up'
+  alt-l = 'focus --boundaries all-monitors-outer-frame right'
+
+  alt-shift-h = 'move --boundaries all-monitors-outer-frame left'
+  alt-shift-j = 'move --boundaries all-monitors-outer-frame down'
+  alt-shift-k = 'move --boundaries all-monitors-outer-frame up' 
+  alt-shift-l = 'move --boundaries all-monitors-outer-frame right'
+
+  alt-ctrl-h = 'join-with left'
+  alt-ctrl-j = 'join-with down'
+  alt-ctrl-k = 'join-with up'
+  alt-ctrl-l = 'join-with right'
+
+  alt-minus = 'resize smart -50'
+  alt-equal = 'resize smart +50'
+
+  alt-1 = 'workspace 1'
+  alt-2 = 'workspace 2'
+  alt-3 = 'workspace 3'
+  alt-4 = 'workspace 4'
+  alt-5 = 'workspace 5'
+  alt-6 = 'workspace 6'
+  alt-7 = 'workspace 7'
+  alt-8 = 'workspace 8'
+  alt-9 = 'workspace 9'
+
+  # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+  alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']       
+  alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+  alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+  alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+  alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+  alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+  alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+  alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+  alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+
+  alt-shift-space = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+  alt-shift-f = 'fullscreen'
+  alt-tab = 'workspace-back-and-forth'
+  alt-shift-tab = 'move-node-to-monitor --wrap-around next'
+
+  alt-shift-semicolon = 'mode service'
 
 [mode.service.binding]
+  esc = ['reload-config', 'mode main']
   r = ['flatten-workspace-tree', 'mode main'] # reset layout
-  f = [
-    'layout floating tiling',
-    'mode main',
-  ] # Toggle between floating and tiling layout
+  f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
   backspace = ['close-all-windows-but-current', 'mode main']
-  esc = 'mode main'
-
-[mode.resize.binding]
-    h = 'resize width -50'
-    j = 'resize height +50'
-    k = 'resize height -50'
-    l = 'resize width +50'
-    enter = 'mode main'
-    esc = 'mode main'
-
-# Always floating windows
 
 [[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
-run = 'layout floating'
+  if.app-id = 'com.apple.finder'
+  check-further-callbacks = true
+  run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'net.freemacsoft.AppCleaner'
-run = 'layout floating'
+  if.app-id = 'com.apple.reminders'
+  check-further-callbacks = true
+  run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.electron.dockerdesktop'
-run = 'layout floating'
+  if.app-id = 'com.apple.AppStore'
+  check-further-callbacks = true
+  run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'org.gimp.gimp-2.10'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.yummygum.Billy'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'net.whatsapp.WhatsApp'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'no.mifi.losslesscut-mac'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.malwarebytes.mbam.frontend.application'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.mail'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.MobileSMS'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.iCal'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.airport.airportutility'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.AddressBook'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.reminders'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Preview'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.DiskUtility'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.ScreenSharing'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Image_Capture'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Dictionary'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.FontBook'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.AudioMIDISetup'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.clock'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Home'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.iBooksX'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.stocks'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.TV'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.weather'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Passwords'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Photos'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Music'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Notes'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.AppStore'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.ActivityMonitor'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.spotify.client'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.surfshark.vpnclient.macos.direct'
-run = 'layout floating'
-
-
+  if.app-id = 'com.NeatDownloadManager'
+  check-further-callbacks = true
+  run = 'layout floating'
